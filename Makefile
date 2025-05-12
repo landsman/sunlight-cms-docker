@@ -1,4 +1,4 @@
-.PHONY: build up down restart logs shell clean help remove-install
+.PHONY: build up down restart logs shell clean help remove-install start-over
 
 # Default target
 .DEFAULT_GOAL := help
@@ -58,7 +58,7 @@ clean: ## Remove containers, volumes, and images
 # Install Sunlight CMS
 install: up ## Install Sunlight CMS
 	@echo "$(COLOR_BOLD)Sunlight CMS is ready to be installed.$(COLOR_RESET)"
-	@echo "$(COLOR_YELLOW)Please visit http://localhost:8080 to complete the installation.$(COLOR_RESET)"
+	@echo "$(COLOR_YELLOW)Please visit http://localhost:8080/install to complete the installation.$(COLOR_RESET)"
 	@echo "$(COLOR_YELLOW)A pre-filled configuration has been provided with the following settings:$(COLOR_RESET)"
 	@echo "  - Host: db"
 	@echo "  - Database: sunlight"
@@ -72,3 +72,21 @@ remove-install: ## Remove the installation directory from the container
 	@echo "$(COLOR_BOLD)Removing installation directory...$(COLOR_RESET)"
 	$(DOCKER_COMPOSE) exec $(CONTAINER_WEB) rm -rf /var/www/html/install
 	@echo "$(COLOR_YELLOW)Installation directory has been removed.$(COLOR_RESET)"
+
+# Start over - completely reset the environment
+start-over: ## Completely reset the environment and start over
+	@echo "$(COLOR_BOLD)WARNING: This will remove all containers, volumes, images, and data directories.$(COLOR_RESET)"
+	@echo "$(COLOR_BOLD)All your data will be lost. Make sure to back up any important data before proceeding.$(COLOR_RESET)"
+	@read -p "Are you sure you want to continue? (y/n) " -n 1 -r; \
+	echo ""; \
+	if [[ $$REPLY =~ ^[Yy]$$ ]]; then \
+		$(MAKE) clean; \
+		echo "$(COLOR_BOLD)Removing data directories...$(COLOR_RESET)"; \
+		rm -rf ./config ./upload ./mysql_data; \
+		echo "$(COLOR_YELLOW)Environment has been reset. To start over, run:$(COLOR_RESET)"; \
+		echo "$(COLOR_YELLOW)  make build$(COLOR_RESET)"; \
+		echo "$(COLOR_YELLOW)  make up$(COLOR_RESET)"; \
+		echo "$(COLOR_YELLOW)  make install$(COLOR_RESET)"; \
+	else \
+		echo "$(COLOR_YELLOW)Operation cancelled.$(COLOR_RESET)"; \
+	fi
