@@ -1,4 +1,4 @@
-.PHONY: build up down restart logs shell clean help
+.PHONY: build up down restart logs shell clean help remove-install
 
 # Default target
 .DEFAULT_GOAL := help
@@ -59,8 +59,16 @@ clean: ## Remove containers, volumes, and images
 install: up ## Install Sunlight CMS
 	@echo "$(COLOR_BOLD)Sunlight CMS is ready to be installed.$(COLOR_RESET)"
 	@echo "$(COLOR_YELLOW)Please visit http://localhost:8080 to complete the installation.$(COLOR_RESET)"
-	@echo "$(COLOR_YELLOW)Use the following database settings:$(COLOR_RESET)"
+	@echo "$(COLOR_YELLOW)A pre-filled configuration has been provided with the following settings:$(COLOR_RESET)"
 	@echo "  - Host: db"
 	@echo "  - Database: sunlight"
 	@echo "  - Username: sunlight"
 	@echo "  - Password: sunlight_password"
+	@echo "  - Admin username: admin"
+	@echo "  - Admin password: admin (please change this after installation)"
+
+# Remove installation directory
+remove-install: ## Remove the installation directory from the container
+	@echo "$(COLOR_BOLD)Removing installation directory...$(COLOR_RESET)"
+	$(DOCKER_COMPOSE) exec $(CONTAINER_WEB) rm -rf /var/www/html/install
+	@echo "$(COLOR_YELLOW)Installation directory has been removed.$(COLOR_RESET)"

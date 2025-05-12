@@ -36,12 +36,16 @@ RUN rm -rf /var/www/html/* && \
 # Configure Apache
 COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
 
-# Copy index.php to the web root
-COPY index.php /var/www/html/index.php
-RUN chown www-data:www-data /var/www/html/index.php
+# Copy pre-filled configuration to a location that won't be overridden by volume mounts
+COPY config.php /var/www/pre-filled-config.php
+
+# Copy entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Expose port 80
 EXPOSE 80
 
-# Start Apache
+# Set entrypoint
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["apache2-foreground"]

@@ -34,6 +34,9 @@ composer.lock
 .env.local
 .env.*.local
 
+# Configuration files
+config.php
+
 # Node.js
 /node_modules/
 npm-debug.log

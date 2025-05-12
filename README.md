@@ -26,7 +26,7 @@ This repository provides a Docker setup for [Sunlight CMS Skeleton](https://gith
    ```
    make install
    ```
-   Then follow the on-screen instructions to complete the installation.
+   A pre-filled configuration has been provided to simplify the installation process. Then follow the on-screen instructions to complete the installation.
 
 ## Available Commands
 
@@ -40,15 +40,35 @@ Run `make help` to see all available commands:
 - `make shell` - Enter the web container shell
 - `make clean` - Remove containers, volumes, and images
 - `make install` - Install Sunlight CMS
+- `make remove-install` - Remove the installation directory from the container
 
-## Database Configuration
+## Pre-filled Configuration
 
-When installing Sunlight CMS, use the following database settings:
+A pre-filled configuration has been provided to simplify the installation process. The following settings are pre-configured:
+
+### Database Configuration
 
 - Host: `db`
 - Database: `sunlight`
 - Username: `sunlight`
 - Password: `sunlight_password`
+- Table prefix: `sunlight_`
+
+### Admin Account
+
+- Username: `admin`
+- Password: `admin` (please change this after installation)
+- Email: `admin@example.com`
+
+### Site Configuration
+
+- Site name: `Sunlight CMS`
+- Site description: `My Sunlight CMS Website`
+- Admin email: `admin@example.com`
+
+You can customize these settings by:
+1. Modifying the `config.php` file in the repository before building the Docker image (this will be used as the template for new installations)
+2. Editing the `config.php` file in the `./config` directory after the container has started (this will persist across container rebuilds)
 
 ## Customization
 
@@ -63,6 +83,12 @@ The following directories are mounted as volumes for data persistence:
 - `./config` - Sunlight CMS configuration files
 - `./upload` - Uploaded files
 - `./mysql_data` - MySQL database files
+
+#### Configuration Persistence
+
+The `config.php` file is automatically created in the `./config` directory on the host when the container starts for the first time. This file contains the pre-filled configuration for Sunlight CMS.
+
+Any changes made to the configuration file inside the container will be persisted to the host, and will not be lost when the container is rebuilt. This ensures that your configuration settings are preserved across container rebuilds.
 
 ### Custom Index Page
 
