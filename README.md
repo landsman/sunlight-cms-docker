@@ -66,7 +66,7 @@ A pre-filled configuration has been provided to simplify the installation proces
 
 You can customize these settings by:
 1. Modifying the `config.php` file in the repository before building the Docker image (this will be used as the template for new installations)
-2. Editing the `config.php` file in the `./config` directory after the container has started (this will persist across container rebuilds)
+2. Editing the `config.php` file in the project root directory after the container has started (this will persist across container rebuilds)
 
 ## Customization
 
@@ -78,7 +78,7 @@ You can modify the database credentials and other settings in the `docker-compos
 
 The following directories are mounted as volumes for data persistence:
 
-- `./config` - Sunlight CMS configuration files
+- `./config.php` - Sunlight CMS configuration file
 - `./upload` - Uploaded files
 - `./mysql_data` - MySQL database files
 

@@ -8,7 +8,7 @@ return [
     'db.password' => 'sunlight_password',
     'db.name' => 'sunlight',
     'db.prefix' => 'sunlight',
-    'secret' => '',
+    'secret' => 'sunlight',
     'fallback_lang' => 'cs',
     'trusted_proxies' => null,
     'trusted_proxy_headers' => null, 

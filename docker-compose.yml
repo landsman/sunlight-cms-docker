@@ -6,7 +6,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./config:/var/www/html/config
+      - ./config.php:/var/www/html/config.php
       - ./upload:/var/www/html/upload
     depends_on:
       - db

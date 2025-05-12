@@ -81,7 +81,7 @@ start-over: ## Completely reset the environment and start over
 	if [[ $$REPLY =~ ^[Yy]$$ ]]; then \
 		$(MAKE) clean; \
 		echo "$(COLOR_BOLD)Removing data directories...$(COLOR_RESET)"; \
-		rm -rf ./config ./upload ./mysql_data; \
+		rm -rf ./config.php ./upload ./mysql_data; \
 		echo "$(COLOR_YELLOW)Environment has been reset. To start over, run:$(COLOR_RESET)"; \
 		echo "$(COLOR_YELLOW)  make build$(COLOR_RESET)"; \
 		echo "$(COLOR_YELLOW)  make up$(COLOR_RESET)"; \
