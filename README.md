@@ -84,7 +84,7 @@ The following directories are mounted as volumes for data persistence:
 
 #### Configuration Persistence
 
-The `config.php` file is automatically created in the `./config` directory on the host when the container starts for the first time. This file contains the pre-filled configuration for Sunlight CMS.
+The `config.php` file is automatically created in the project root directory on the host when the container starts for the first time. This file contains the pre-filled configuration for Sunlight CMS.
 
 Any changes made to the configuration file inside the container will be persisted to the host, and will not be lost when the container is rebuilt. This ensures that your configuration settings are preserved across container rebuilds.
 
@@ -99,7 +99,7 @@ make start-over
 This command will:
 
 1. Remove all Docker containers, volumes, and images
-2. Delete all data directories (`./config`, `./upload`, and `./mysql_data`)
+2. Delete all data files and directories (`./config.php`, `./upload`, and `./mysql_data`)
 3. Provide instructions for rebuilding and restarting the environment
 
 **Warning**: This will delete all your data, including:
