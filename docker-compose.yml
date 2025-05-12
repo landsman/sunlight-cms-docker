@@ -1,0 +1,31 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./config:/var/www/html/config
+      - ./upload:/var/www/html/upload
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_DATABASE: sunlight
+      DB_USERNAME: sunlight
+      DB_PASSWORD: sunlight_password
+    restart: always
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: sunlight
+      MYSQL_USER: sunlight
+      MYSQL_PASSWORD: sunlight_password
+      MYSQL_ROOT_PASSWORD: root_password
+    restart: always

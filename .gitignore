@@ -1,0 +1,40 @@
+# IDE specific files
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Docker specific files
+.docker/
+docker-compose.override.yml
+/mysql_data/
+
+# PHP specific files
+/vendor/
+composer.phar
+composer.lock
+/logs/
+*.log
+
+# Sunlight CMS specific
+/config/
+/upload/
+/system/cache/
+/system/tmp/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node.js
+/node_modules/
+npm-debug.log
+yarn-error.log
