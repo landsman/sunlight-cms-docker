@@ -91,16 +91,6 @@ The `config.php` file is automatically created in the `./config` directory on th
 
 Any changes made to the configuration file inside the container will be persisted to the host, and will not be lost when the container is rebuilt. This ensures that your configuration settings are preserved across container rebuilds.
 
-### Custom Index Page
-
-A custom index.php file is included in the web root directory. This file:
-
-1. Attempts to redirect to common entry points for Sunlight CMS
-2. If no entry point is found, displays a helpful page with information about the installation
-3. Shows the directory structure and provides next steps
-
-This ensures that a directory listing is not shown when accessing the root URL.
-
 ## Starting Over
 
 If you need to completely reset your environment and start over, you can use the `start-over` command:
