@@ -47,25 +47,22 @@ Run `make help` to see all available commands:
 
 A pre-filled configuration has been provided to simplify the installation process. The following settings are pre-configured:
 
-### Database Configuration
+### Configuration Settings
 
-- Host: `db`
-- Database: `sunlight`
-- Username: `sunlight`
-- Password: `sunlight_password`
-- Table prefix: `sunlight_`
-
-### Admin Account
-
-- Username: `admin`
-- Password: `admin` (please change this after installation)
-- Email: `admin@example.com`
-
-### Site Configuration
-
-- Site name: `Sunlight CMS`
-- Site description: `My Sunlight CMS Website`
-- Admin email: `admin@example.com`
+- `debug`: `false` - Debug mode is disabled
+- `db.server`: `db` - Database server hostname
+- `db.port`: `null` - Database port (uses default)
+- `db.user`: `sunlight` - Database username
+- `db.password`: `sunlight_password` - Database password
+- `db.name`: `sunlight` - Database name
+- `db.prefix`: `sunlight` - Table prefix for database tables
+- `secret`: `` - Secret key for security (will be generated during installation)
+- `fallback_lang`: `cs` - Fallback language
+- `trusted_proxies`: `null` - Trusted proxy settings
+- `trusted_proxy_headers`: `null` - Trusted proxy headers
+- `cache`: `true` - Caching is enabled
+- `timezone`: `null` - Timezone (uses default)
+- `safe_mode`: `false` - Safe mode is disabled
 
 You can customize these settings by:
 1. Modifying the `config.php` file in the repository before building the Docker image (this will be used as the template for new installations)

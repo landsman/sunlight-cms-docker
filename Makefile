@@ -60,12 +60,11 @@ install: up ## Install Sunlight CMS
 	@echo "$(COLOR_BOLD)Sunlight CMS is ready to be installed.$(COLOR_RESET)"
 	@echo "$(COLOR_YELLOW)Please visit http://localhost:8080/install to complete the installation.$(COLOR_RESET)"
 	@echo "$(COLOR_YELLOW)A pre-filled configuration has been provided with the following settings:$(COLOR_RESET)"
-	@echo "  - Host: db"
-	@echo "  - Database: sunlight"
-	@echo "  - Username: sunlight"
-	@echo "  - Password: sunlight_password"
-	@echo "  - Admin username: admin"
-	@echo "  - Admin password: admin (please change this after installation)"
+	@echo "  - Database server: db"
+	@echo "  - Database name: sunlight"
+	@echo "  - Database username: sunlight"
+	@echo "  - Database password: sunlight_password"
+	@echo "  - Table prefix: sunlight"
 
 # Remove installation directory
 remove-install: ## Remove the installation directory from the container

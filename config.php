@@ -1,26 +1,18 @@
 <?php
-// Pre-filled configuration for Sunlight CMS installation
+
 return [
-    // Database configuration
-    'database' => [
-        'host' => 'db',
-        'name' => 'sunlight',
-        'user' => 'sunlight',
-        'password' => 'sunlight_password',
-        'prefix' => 'cms_',
-    ],
-    
-    // Site configuration
-    'site' => [
-        'name' => 'Sunlight CMS',
-        'description' => 'My Sunlight CMS Website',
-        'email' => 'admin@example.com',
-    ],
-    
-    // Admin account
-    'admin' => [
-        'username' => 'admin',
-        'password' => 'admin', // Change this in production
-        'email' => 'admin@example.com',
-    ],
+    'debug' => false,
+    'db.server' => 'db',
+    'db.port' => null,
+    'db.user' => 'sunlight',
+    'db.password' => 'sunlight_password',
+    'db.name' => 'sunlight',
+    'db.prefix' => 'sunlight',
+    'secret' => '',
+    'fallback_lang' => 'cs',
+    'trusted_proxies' => null,
+    'trusted_proxy_headers' => null, 
+    'cache' => true,
+    'timezone' => null, 
+    'safe_mode' => false,
 ];
